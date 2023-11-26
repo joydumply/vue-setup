@@ -6,15 +6,20 @@
 	>
 		Hello World
 	</h1>
+	<HelloWorld @onChangeCounter="onChangeCounterInComponent" />
 </template>
 
 <script>
 /**
  * * @click.prevent - click with prevent default for links
  */
+import HelloWorld from './components/HelloWorld.vue';
 
 export default {
 	name: 'app',
+	components: {
+		HelloWorld,
+	},
 	data: () => ({
 		isActive: true,
 		fontSize: 20,
@@ -30,6 +35,10 @@ export default {
 			};
 		},
 	},
-	methods: {},
+	methods: {
+		onChangeCounterInComponent(value) {
+			console.log('In App.vue counter: ', value);
+		},
+	},
 };
 </script>
