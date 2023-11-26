@@ -1,5 +1,10 @@
 <template>
-	<h1>{{ text }}</h1>
+	<h1>Hello {{ fullName }}</h1>
+	<input
+		type="text"
+		@keypress.enter="onSetFirstName"
+	/>
+	<hr />
 	<input
 		type="text"
 		@keypress.enter="onEnterPress"
@@ -77,7 +82,27 @@ export default {
 			model: 'iPhone 12 Pro',
 			price: '$1000',
 		},
+
+		first_name: 'Nik',
+		last_name: 'Babichev',
 	}),
+	computed: {
+		// fullName() {
+		// 	return `${this.first_name || 'Default'} ${this.last_name || 'User'}`;
+		// },
+
+		fullName: {
+			get() {
+				return `${this.first_name || 'Default'} ${this.last_name || 'User'}`;
+			},
+			set(value) {
+				console.log(value);
+				const [firstName, lastName] = value.split(' ');
+				this.first_name = firstName;
+				this.last_name = lastName;
+			},
+		},
+	},
 	methods: {
 		onClick(value, event) {
 			console.log(value, event);
@@ -98,6 +123,16 @@ export default {
 			console.log(this);
 			// this.$delete(this.product, e.target.value); // используется на vue 2 и не работает на vue 3
 		},
+		onSetFirstName(e) {
+			// this.first_name = e.target.value;
+			this.fullName = e.target.value;
+		},
+		onLastnameUpdate(value){
+			console.log(value);
+		}
 	},
+	watch: {
+		last_name: 'onLastnameUpdate'
+	}
 };
 </script>
