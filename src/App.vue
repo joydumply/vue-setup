@@ -13,6 +13,9 @@
 		:user="user"
 		@onChangeCounter="onChangeCounterInComponent"
 	/>
+	<div>
+		<MyVModel />
+	</div>
 </template>
 
 <script>
@@ -20,11 +23,13 @@
  * * @click.prevent - click with prevent default for links
  */
 import HelloWorld from './components/HelloWorld.vue';
+import MyVModel from './components/MyVModel.vue';
 
 export default {
 	name: 'app',
 	components: {
 		HelloWorld,
+		MyVModel,
 	},
 	data: () => ({
 		title: 'Some Title',
