@@ -6,7 +6,13 @@
 	>
 		Hello World
 	</h1>
-	<HelloWorld @onChangeCounter="onChangeCounterInComponent" />
+	<HelloWorld
+		:title="title"
+		:test="test"
+		:test2="test2"
+		:user="user"
+		@onChangeCounter="onChangeCounterInComponent"
+	/>
 </template>
 
 <script>
@@ -21,9 +27,17 @@ export default {
 		HelloWorld,
 	},
 	data: () => ({
+		title: 'Some Title',
 		isActive: true,
 		fontSize: 20,
 
+		test: 'test',
+		test2: 'test2',
+
+		user: {
+			name: 'Isaac',
+			age: 5,
+		},
 		activeClass: 'my-active-class',
 		secondaryClass: 'my-secondary-class',
 	}),
